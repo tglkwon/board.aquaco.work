@@ -1,0 +1,20 @@
+.Read > .text{
+  display: flex;
+  justify-content: space-between;
+}
+
+.Read > .text > .title,
+.Read > .text > .author,
+.Read > .text > .datetime {
+  font-size: 16px;
+  height: 24px;
+}
+
+.Read > .text > .author {
+  width: 160px;
+}
+
+.Read > .contents {
+  font-size: 16px;
+}
+
