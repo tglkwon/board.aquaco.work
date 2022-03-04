@@ -9,7 +9,7 @@ import './Read.css'
 
 function Read() {
   const { no } = useParams(`/read/:no`)
-  const [ list, setList ] = useState({})
+  const [ document, setDocument ] = useState({})
 
   useEffect(() => {
     (async () => {
@@ -18,7 +18,7 @@ function Read() {
         url: `http://3.36.234.106:1208/${no}`
       })
       if (data.success) {
-        setList(data.document)
+        setDocument(data.document)
       }
     })()
   }, [no])
@@ -26,12 +26,12 @@ function Read() {
   return (
     <div className="Read">
       <div className='text'>
-        <div className='title'>{list.title}</div>
-        <div className='author'>{list.author}</div>
-        <div className='datetime'>{moment(list.datetime).format("YY-MM-DD HH:mm:ss")}</div>   
+        <div className='title'>{document.title}</div>
+        <div className='author'>{document.author}</div>
+        <div className='datetime'>{moment(document.datetime).format("YY-MM-DD HH:mm:ss")}</div>   
       </div>
-      <div className='contents' dangerouslySetInnerHTML={{ __html: sanitizeHtml(list.contents)}}></div>   
-      <ReplyList replyList={list.reply} key={list.reply?.no}/>
+      <div className='contents' dangerouslySetInnerHTML={{ __html: sanitizeHtml(document.contents)}}></div>   
+      <ReplyList document={document} setDocument={setDocument}/>
     </div>
   )
 }
